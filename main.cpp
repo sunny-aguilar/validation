@@ -10,10 +10,12 @@ using std::string;
 string validateSelection();
 int validateSize();
 string validateSizeRegex();
+int validateSteps();
 
 int main() {
 //    validateSelection();
-    cout << "Returning value " << validateSize();
+//    cout << "Returning value " << validateSize();
+    validateSteps();
 
 }
 /*********************************************************************
@@ -52,7 +54,7 @@ string validateSelection() {
 *********************************************************************/
 int validateSize() {
     char choice[100];
-    int intValue = 0;
+    int boardSize = 0;
     std::stringstream convert;
     bool tooLong = false;
     bool isNotDigit = false;
@@ -83,10 +85,10 @@ int validateSize() {
         if (isNotDigit == false && tooLong == false) {
             convert.clear();
             convert << choice;
-            convert >> intValue;
+            convert >> boardSize;
 
-            if (intValue <= 100 && intValue > 1) {
-                cout << "You entered " << intValue << endl;
+            if (boardSize <= 100 && boardSize > 1) {
+                cout << "You entered " << boardSize << endl;
             }
             else {
                 notInRange = true;
@@ -94,126 +96,7 @@ int validateSize() {
         }
     } while (tooLong || isNotDigit || notInRange);
 
-
-
-//    do {
-//        while (strlen(choice) > 3) {
-//            cout << "You must enter no more than 3 numbers\n";
-//            cin >> choice;
-//        }
-//        convert << choice;
-//        convert.clear();
-//        convert >> intValue;
-//
-//        while (!isDigit) {
-//            for (int i = 0; i < strlen(choice); i++) {
-//                // if digit is not true, then set it true so that
-//                // loop will repeat
-//                if (!isdigit(choice[i])) {
-//                    isDigit = true;
-//                }
-//            }
-//
-//            if (isDigit) {
-//                cout << "Do not enter characters!\n";
-//                cout << "You must enter an integer between 2 and 100\n";
-//                cin >> choice;
-//                convert.clear();
-//                convert << choice;
-//                convert >> intValue;
-//            }
-//        }
-//        cout << "Congrats! You entered " << intValue << endl;
-//        invalid = false;
-
-//        if (intValue <= 100 && intValue > 1) {
-//            cout << "You entered " << intValue << endl;
-//        } else {
-//            cout << "Enter a value between 2 and 100\n";
-//            getline(cin, row);
-//            convert.clear();
-//            convert << row;
-//            convert >> intValue;
-//        }
-//    } while (invalid);
-
-
-//    while (invalid) {
-//        while (!isDigit) {
-//            for (int i = 0; i < strlen(choice); i++) {
-//                if (!isdigit(choice[i])) {
-//                    isDigit = true;
-//                }
-//            }
-//            cout << "You must enter a number only!\n";
-//            cin >> choice;
-//            convert << choice;
-//            convert.clear();
-//            convert >> intValue;
-//        }
-//        invalid = false;
-//        cout << "Valid number entered\n";
-
-//        while (strlen(choice) > 1) {
-//            cout << "You must enter a number only!\n";
-//            cin >> choice;
-//            convert << choice;
-//            convert.clear();
-//            convert >> intValue;
-//        }
-//
-//        if (intValue > 100 || intValue < 2) {
-//            cout << "Please enter a valid selection between 2-100\n";
-//            cin >> choice;
-//            convert.clear();
-//            convert << choice;
-//            convert >> intValue;
-////            cout << "intValue in while loop is " << intValue << endl;
-//        }
-//        else if (intValue <= 100 && intValue >= 2) {
-//            cout << "You entered " << intValue << endl;
-//            invalid = false;
-//            return intValue;
-//        }
-//    }
-
-
-
-//
-//    for (int i = 0; i < strlen(choice); i++) {
-//        if (!isdigit(choice[i])) {
-//            cout << "You must enter a number only!\n";
-//        }
-//        else {
-//            // convert s-string into a stream
-//            convert << choice;
-//            // concatenate c-string into a string
-//            convert >> intValue;
-//
-//            while (invalid) {
-//
-//                if (intValue > 100 || intValue < 2) {
-//                    cout << "Please enter a valid selection between 2-100\n";
-//                    cin >> choice;
-//                    convert.clear();
-//                    convert << choice;
-//                    convert >> intValue;
-////                    cout << "intValue in while loop is " << intValue << endl;
-//                }
-//                else if (intValue <= 100 && intValue >= 2) {
-//                    cout << "You entered " << intValue << endl;
-//                    invalid = false;
-//                }
-//            }
-//        }
-//    }
-//
-//    // debugging code
-////    cout << "C-string length is " << strlen(choice) << endl;
-////    cout << "Is digit " << isdigit(choice[0]) << endl;
-//
-    return intValue;
-
+    return boardSize;
 }
 
 string validateSizeRegex() {
@@ -228,4 +111,9 @@ string validateSizeRegex() {
     cout << "You have selected " << choice << endl;
 
     return choice;
+}
+
+int validateSteps() {
+
+    return 0;
 }
