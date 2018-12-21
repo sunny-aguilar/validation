@@ -10,12 +10,12 @@ using std::string;
 string validateSelection();
 int validateSize();
 string validateSizeRegex();
-int validateSteps();
+int validateSteps(int min, int max);
 
 int main() {
 //    validateSelection();
-//    cout << "Returning value " << validateSize();
-    validateSteps();
+    cout << "Returning value " << validateSize();
+//    validateSteps(1, 1000);
 
 }
 /*********************************************************************
@@ -87,7 +87,7 @@ int validateSize() {
             convert << choice;
             convert >> boardSize;
 
-            if (boardSize <= 100 && boardSize > 1) {
+            if (boardSize > 1 && boardSize <= 100) {
                 cout << "You entered " << boardSize << endl;
             }
             else {
@@ -114,7 +114,7 @@ string validateSizeRegex() {
     return choice;
 }
 
-int validateSteps() {
+int validateSteps(int min, int max) {
     char choice[100];
     int boardSize = 0;
     std::stringstream convert;
@@ -122,13 +122,15 @@ int validateSteps() {
     bool isNotDigit = false;
     bool notInRange = false;
 
+    cout << "Min " << min << " and max is " << max << endl;
+
     do {
-        cout << "Enter an integer between 2 and 100\n";
+        cout << "Enter an integer between " << min << " and " << max << endl;
         cin.getline(choice, 100);
 
         // check if length is greater than 3
         tooLong = false;
-        if (strlen(choice) > 3) {
+        if (strlen(choice) > 4) {
             tooLong = true;
         }
 
@@ -149,7 +151,7 @@ int validateSteps() {
             convert << choice;
             convert >> boardSize;
 
-            if (boardSize <= 100 && boardSize > 1) {
+            if (boardSize > min && boardSize <= max) {
                 cout << "You entered " << boardSize << endl;
             }
             else {
@@ -159,18 +161,4 @@ int validateSteps() {
     } while (tooLong || isNotDigit || notInRange);
 
     return 0;
-
-//    string steps;
-//    getline(cin, steps);
-//
-//    regex validMatch("^[1-9]|[1-9][0-9]|[1-9][0-9][0-9]|1000$");
-//    std::smatch m;
-//
-//    while (!std::regex_match(steps, m, validMatch)) {
-//        cout << "Please enter a valid number of steps between 1 and 1000\n";
-//        getline(cin, steps);
-//    }
-//    cout << "You have selected " << steps << " steps in the simulation\n\n";
-//
-//    return returnInteger(steps);
 }
