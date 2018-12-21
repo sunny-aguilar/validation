@@ -56,37 +56,69 @@ int validateSize() {
     int intValue = 0;
     std::stringstream convert;
     bool invalid = true;
-    bool isDigit = false;
+    bool tooLong = false;
+    bool isNotDigit = false;
+    bool inRange = false;
 
-    cout << "Enter an integer between 2 and 100\n";
-    cin >> choice;
+//    cout << "Enter an integer between 2 and 100\n";
 
     do {
-        while (strlen(choice) > 3) {
-            cout << "You must enter an integer between 2 and 100\n";
-            cin >> choice;
-        }
-        convert << choice;
-        convert.clear();
-        convert >> intValue;
+        cout << "Enter an integer between 2 and 100\n";
+        cin >> choice;
 
-        while (!isDigit) {
-            for (int i = 0; i < strlen(choice); i++) {
-                // if digit is not true, then set it true so that
-                // loop will repeat
-                if (!isdigit(choice[0])) {
-                    isDigit = true;
-                }
-            }
-            cout << "Do not enter characters!\n";
-            cout << "You must enter an integer between 2 and 100\n";
-            cin >> choice;
-            convert.clear();
-            convert << choice;
-            convert >> intValue;
+        // check if length is greater than 3
+        if (strlen(choice) > 3) {
+            tooLong = true;
+            cout << "Length Check\n";
         }
-        cout << "Congrats! You entered " << intValue << endl;
-        invalid = false;
+
+        // check if all characters entered are digits
+        for (int i = 0; i < strlen(choice); i++) {
+            // if digit is not true, then set it true so that
+            // loop will repeat
+            if (!isdigit(choice[i])) {
+                isNotDigit = true;
+                cout << "Digit Check\n";
+            }
+        }
+
+        // check if characters entered are within range
+
+
+
+    } while (tooLong || isNotDigit);
+
+
+
+//    do {
+//        while (strlen(choice) > 3) {
+//            cout << "You must enter no more than 3 numbers\n";
+//            cin >> choice;
+//        }
+//        convert << choice;
+//        convert.clear();
+//        convert >> intValue;
+//
+//        while (!isDigit) {
+//            for (int i = 0; i < strlen(choice); i++) {
+//                // if digit is not true, then set it true so that
+//                // loop will repeat
+//                if (!isdigit(choice[i])) {
+//                    isDigit = true;
+//                }
+//            }
+//
+//            if (isDigit) {
+//                cout << "Do not enter characters!\n";
+//                cout << "You must enter an integer between 2 and 100\n";
+//                cin >> choice;
+//                convert.clear();
+//                convert << choice;
+//                convert >> intValue;
+//            }
+//        }
+//        cout << "Congrats! You entered " << intValue << endl;
+//        invalid = false;
 
 //        if (intValue <= 100 && intValue > 1) {
 //            cout << "You entered " << intValue << endl;
@@ -97,7 +129,7 @@ int validateSize() {
 //            convert << row;
 //            convert >> intValue;
 //        }
-    } while (invalid);
+//    } while (invalid);
 
 
 //    while (invalid) {
