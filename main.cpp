@@ -58,35 +58,49 @@ int validateSize() {
     bool invalid = true;
     bool tooLong = false;
     bool isNotDigit = false;
-    bool inRange = false;
+    bool notInRange = false;
 
 //    cout << "Enter an integer between 2 and 100\n";
 
     do {
         cout << "Enter an integer between 2 and 100\n";
-        cin >> choice;
+        cin.getline(choice, 100);
 
         // check if length is greater than 3
+        tooLong = false;
         if (strlen(choice) > 3) {
+//            cout << "String length is " << strlen(choice) << endl;
             tooLong = true;
-            cout << "Length Check\n";
         }
 
         // check if all characters entered are digits
+        isNotDigit = false;
         for (int i = 0; i < strlen(choice); i++) {
             // if digit is not true, then set it true so that
             // loop will repeat
             if (!isdigit(choice[i])) {
                 isNotDigit = true;
-                cout << "Digit Check\n";
+//                cout << "Not a digit\n";
             }
         }
 
         // check if characters entered are within range
+        notInRange = false;
+        if (isNotDigit == false && tooLong == false) {
+            convert.clear();
+            convert << choice;
+            convert >> intValue;
+
+            if (intValue <= 100 && intValue > 1) {
+                cout << "You entered " << intValue << endl;
+            }
+            else {
+                notInRange = true;
+            }
+        }
 
 
-
-    } while (tooLong || isNotDigit);
+    } while (tooLong || isNotDigit || notInRange);
 
 
 
