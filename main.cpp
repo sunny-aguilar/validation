@@ -51,11 +51,9 @@ string validateSelection() {
 ** Description:     Validate number of rows and columns for the board
 *********************************************************************/
 int validateSize() {
-    string row;
     char choice[100];
     int intValue = 0;
     std::stringstream convert;
-    bool invalid = true;
     bool tooLong = false;
     bool isNotDigit = false;
     bool notInRange = false;
@@ -73,7 +71,7 @@ int validateSize() {
         // check if all characters entered are digits
         isNotDigit = false;
         for (int i = 0; i < strlen(choice); i++) {
-            // if digit is not true, then set it true so that
+            // if digit is not a digit, then set it true so that
             // loop will repeat
             if (!isdigit(choice[i])) {
                 isNotDigit = true;
@@ -94,8 +92,6 @@ int validateSize() {
                 notInRange = true;
             }
         }
-
-
     } while (tooLong || isNotDigit || notInRange);
 
 
