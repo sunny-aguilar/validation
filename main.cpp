@@ -102,6 +102,7 @@ int validateSize() {
 string validateSizeRegex() {
     string choice;
     std::regex validMatch("^[2-9]|[1-9][0-9]|100$");
+//    regex validMatch("^[1-9]|[1-9][0-9]|[1-9][0-9][0-9]|1000$");
     std::smatch m;
 
     while (!std::regex_match(choice, m, validMatch)) {
@@ -114,6 +115,62 @@ string validateSizeRegex() {
 }
 
 int validateSteps() {
+    char choice[100];
+    int boardSize = 0;
+    std::stringstream convert;
+    bool tooLong = false;
+    bool isNotDigit = false;
+    bool notInRange = false;
+
+    do {
+        cout << "Enter an integer between 2 and 100\n";
+        cin.getline(choice, 100);
+
+        // check if length is greater than 3
+        tooLong = false;
+        if (strlen(choice) > 3) {
+            tooLong = true;
+        }
+
+        // check if all characters entered are digits
+        isNotDigit = false;
+        for (int i = 0; i < strlen(choice); i++) {
+            // if digit is not a digit, then set it true so that
+            // loop will repeat
+            if (!isdigit(choice[i])) {
+                isNotDigit = true;
+            }
+        }
+
+        // check if characters entered are within range
+        notInRange = false;
+        if (isNotDigit == false && tooLong == false) {
+            convert.clear();
+            convert << choice;
+            convert >> boardSize;
+
+            if (boardSize <= 100 && boardSize > 1) {
+                cout << "You entered " << boardSize << endl;
+            }
+            else {
+                notInRange = true;
+            }
+        }
+    } while (tooLong || isNotDigit || notInRange);
 
     return 0;
+
+//    string steps;
+//    getline(cin, steps);
+//
+//    regex validMatch("^[1-9]|[1-9][0-9]|[1-9][0-9][0-9]|1000$");
+//    std::smatch m;
+//
+//    while (!std::regex_match(steps, m, validMatch)) {
+//        cout << "Please enter a valid number of steps between 1 and 1000\n";
+//        getline(cin, steps);
+//    }
+//    cout << "You have selected " << steps << " steps in the simulation\n\n";
+//
+//    return returnInteger(steps);
 }
