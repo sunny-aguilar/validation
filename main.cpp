@@ -14,8 +14,8 @@ int validateSteps(int min, int max);
 
 int main() {
 //    validateSelection();
-    cout << "Returning value " << validateSize();
-//    validateSteps(1, 1000);
+//    cout << "Returning value " << validateSize();
+    validateSteps(1, 1000);
 
 }
 /*********************************************************************
@@ -59,6 +59,7 @@ int validateSize() {
     bool tooLong = false;
     bool isNotDigit = false;
     bool notInRange = false;
+
 
     do {
         cout << "Enter an integer between 2 and 100\n";
@@ -122,6 +123,10 @@ int validateSteps(int min, int max) {
     bool isNotDigit = false;
     bool notInRange = false;
 
+    // determine # of digits in max value acceptable
+    long unsigned length = std::to_string(max).length();
+    cout << "Max length " << length << endl;
+
     cout << "Min " << min << " and max is " << max << endl;
 
     do {
@@ -130,7 +135,7 @@ int validateSteps(int min, int max) {
 
         // check if length is greater than 3
         tooLong = false;
-        if (strlen(choice) > 4) {
+        if (strlen(choice) > length) {
             tooLong = true;
         }
 
@@ -151,7 +156,7 @@ int validateSteps(int min, int max) {
             convert << choice;
             convert >> boardSize;
 
-            if (boardSize > min && boardSize <= max) {
+            if (boardSize >= min && boardSize <= max) {
                 cout << "You entered " << boardSize << endl;
             }
             else {
