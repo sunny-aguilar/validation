@@ -59,23 +59,45 @@ int validateSize() {
     bool isDigit = false;
 
     cout << "Enter an integer between 2 and 100\n";
-    getline(cin, row);
+    cin >> choice;
 
     do {
-        while (row.length() > 3) {
+        while (strlen(choice) > 3) {
             cout << "You must enter an integer between 2 and 100\n";
-            getline(cin, row);
+            cin >> choice;
         }
+        convert << choice;
         convert.clear();
-        convert << row;
+        convert >> intValue;
 
-        if (convert >> intValue && (intValue <= 100 && intValue > 1)) {
-            cout << "You entered " << intValue << endl;
-        } else {
-            cout << "Enter a value between 2 and 100\n";
-            getline(cin, row);
+        while (!isDigit) {
+            for (int i = 0; i < strlen(choice); i++) {
+                // if digit is not true, then set it true so that
+                // loop will repeat
+                if (!isdigit(choice[0])) {
+                    isDigit = true;
+                }
+            }
+            cout << "Do not enter characters!\n";
+            cout << "You must enter an integer between 2 and 100\n";
+            cin >> choice;
+            convert.clear();
+            convert << choice;
+            convert >> intValue;
         }
-    } while (intValue > 100 || intValue < 2);
+        cout << "Congrats! You entered " << intValue << endl;
+        invalid = false;
+
+//        if (intValue <= 100 && intValue > 1) {
+//            cout << "You entered " << intValue << endl;
+//        } else {
+//            cout << "Enter a value between 2 and 100\n";
+//            getline(cin, row);
+//            convert.clear();
+//            convert << row;
+//            convert >> intValue;
+//        }
+    } while (invalid);
 
 
 //    while (invalid) {
