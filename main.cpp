@@ -48,7 +48,7 @@ string validateSelection() {
 }
 
 /*********************************************************************
-** Description:     Validate number of rows for the board
+** Description:     Validate number of rows and columns for the board
 *********************************************************************/
 int validateSize() {
     string row;
@@ -60,8 +60,6 @@ int validateSize() {
     bool isNotDigit = false;
     bool notInRange = false;
 
-//    cout << "Enter an integer between 2 and 100\n";
-
     do {
         cout << "Enter an integer between 2 and 100\n";
         cin.getline(choice, 100);
@@ -69,7 +67,6 @@ int validateSize() {
         // check if length is greater than 3
         tooLong = false;
         if (strlen(choice) > 3) {
-//            cout << "String length is " << strlen(choice) << endl;
             tooLong = true;
         }
 
@@ -80,7 +77,6 @@ int validateSize() {
             // loop will repeat
             if (!isdigit(choice[i])) {
                 isNotDigit = true;
-//                cout << "Not a digit\n";
             }
         }
 
