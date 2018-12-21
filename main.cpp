@@ -1,6 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <regex>
 using std::cin;
 using std::cout;
 using std::endl;
@@ -8,6 +9,7 @@ using std::string;
 
 string validateSelection();
 int validateSize();
+string validateSizeRegex();
 
 int main() {
 //    validateSelection();
@@ -93,14 +95,16 @@ int validateSize() {
 
 }
 
+string validateSizeRegex() {
+    string choice;
+    std::regex validMatch("^[2-9]|[1-9][0-9]|100$");
+    std::smatch m;
 
-//    regex validMatch("^[2-9]|[1-9][0-9]|100$");
-//    std::smatch m;
-//
-//    while (!std::regex_match(choice, m, validMatch)) {
-//        cout << "Please enter a valid selection between 2-100\n";
-//        getline(cin, choice);
-//    }
-//    cout << "You have selected " << choice << " " << dimension << endl;
+    while (!std::regex_match(choice, m, validMatch)) {
+        cout << "Please enter a valid selection between 2-100\n";
+        getline(cin, choice);
+    }
+    cout << "You have selected " << choice << endl;
 
-//    return returnInteger(choice);
+    return choice;
+}
