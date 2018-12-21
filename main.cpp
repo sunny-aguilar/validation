@@ -51,46 +51,107 @@ string validateSelection() {
 ** Description:     Validate number of rows for the board
 *********************************************************************/
 int validateSize() {
+    string row;
     char choice[100];
-    int intValue;
+    int intValue = 0;
     std::stringstream convert;
     bool invalid = true;
+    bool isDigit = false;
 
     cout << "Enter an integer between 2 and 100\n";
-    cin >> choice;
+    getline(cin, row);
 
-    for (int i = 0; i < strlen(choice); i++) {
-        if (!isdigit(choice[i])) {
-            cout << "You must enter a number only!\n";
+    do {
+        while (row.length() > 3) {
+            cout << "You must enter an integer between 2 and 100\n";
+            getline(cin, row);
         }
-        else {
-            // convert s-string into a stream
-            convert << choice;
-            // concatenate c-string into a string
-            convert >> intValue;
+        convert.clear();
+        convert << row;
 
-            while (invalid) {
-
-                if (intValue > 100 || intValue < 2) {
-                    cout << "Please enter a valid selection between 2-100\n";
-                    cin >> choice;
-                    convert.clear();
-                    convert << choice;
-                    convert >> intValue;
-//                    cout << "intValue in while loop is " << intValue << endl;
-                }
-                else if (intValue <= 100 && intValue >= 2) {
-                    cout << "You entered " << intValue << endl;
-                    invalid = false;
-                }
-            }
+        if (convert >> intValue && (intValue <= 100 && intValue > 1)) {
+            cout << "You entered " << intValue << endl;
+        } else {
+            cout << "Enter a value between 2 and 100\n";
+            getline(cin, row);
         }
-    }
+    } while (intValue > 100 || intValue < 2);
 
-    // debugging code
-//    cout << "C-string length is " << strlen(choice) << endl;
-//    cout << "Is digit " << isdigit(choice[0]) << endl;
 
+//    while (invalid) {
+//        while (!isDigit) {
+//            for (int i = 0; i < strlen(choice); i++) {
+//                if (!isdigit(choice[i])) {
+//                    isDigit = true;
+//                }
+//            }
+//            cout << "You must enter a number only!\n";
+//            cin >> choice;
+//            convert << choice;
+//            convert.clear();
+//            convert >> intValue;
+//        }
+//        invalid = false;
+//        cout << "Valid number entered\n";
+
+//        while (strlen(choice) > 1) {
+//            cout << "You must enter a number only!\n";
+//            cin >> choice;
+//            convert << choice;
+//            convert.clear();
+//            convert >> intValue;
+//        }
+//
+//        if (intValue > 100 || intValue < 2) {
+//            cout << "Please enter a valid selection between 2-100\n";
+//            cin >> choice;
+//            convert.clear();
+//            convert << choice;
+//            convert >> intValue;
+////            cout << "intValue in while loop is " << intValue << endl;
+//        }
+//        else if (intValue <= 100 && intValue >= 2) {
+//            cout << "You entered " << intValue << endl;
+//            invalid = false;
+//            return intValue;
+//        }
+//    }
+
+
+
+//
+//    for (int i = 0; i < strlen(choice); i++) {
+//        if (!isdigit(choice[i])) {
+//            cout << "You must enter a number only!\n";
+//        }
+//        else {
+//            // convert s-string into a stream
+//            convert << choice;
+//            // concatenate c-string into a string
+//            convert >> intValue;
+//
+//            while (invalid) {
+//
+//                if (intValue > 100 || intValue < 2) {
+//                    cout << "Please enter a valid selection between 2-100\n";
+//                    cin >> choice;
+//                    convert.clear();
+//                    convert << choice;
+//                    convert >> intValue;
+////                    cout << "intValue in while loop is " << intValue << endl;
+//                }
+//                else if (intValue <= 100 && intValue >= 2) {
+//                    cout << "You entered " << intValue << endl;
+//                    invalid = false;
+//                }
+//            }
+//        }
+//    }
+//
+//    // debugging code
+////    cout << "C-string length is " << strlen(choice) << endl;
+////    cout << "Is digit " << isdigit(choice[0]) << endl;
+//
     return intValue;
 
 }
