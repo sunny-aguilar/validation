@@ -12,12 +12,14 @@ int validateSize();
 string validateSizeRegex();
 int validateNumber(int min, int max);
 int validateStartingSelection();
+int validateCustomStarting(int min, int boardSize);
 
 int main() {
 //    validateSelection();
 //    cout << "Returning value " << validateSize();
 //    validateNumber(1, 1000);
-    cout << "Returning value " << validateStartingSelection();
+//    cout << "Returning value " << validateStartingSelection();
+    cout << "Returning custom starting " << validateCustomStarting(2, 100) << endl;
 
 }
 /*********************************************************************
@@ -200,12 +202,27 @@ int validateStartingSelection() {
     }
 
     return stoi(choice);
+}
+/*********************************************************************
+** Description:     Validate custom start location of the ant
+*********************************************************************/
+int validateCustomStarting(int min, int boardSize) {
+    return validateNumber(2, 100);
 
 
+    //    string regexPattern;
+//
+//    if (boardSize < 10)
+//        regexPattern = "^[2-9]$";
+//    else if (boardSize < 100)
+//        regexPattern = "^[2-9]|[1-9][0-9]$";
+//    else if (boardSize == 100)
+//        regexPattern = "^[2-9]|[1-9][0-9]|100$";
+//
 //    string start;
 //    getline(cin, start);
 //
-//    regex validMatch("^[1-2]{1}$");
+//    regex validMatch(regexPattern);
 //    std::smatch m;
 //
 //    while (!std::regex_match(start, m, validMatch)) {
@@ -213,17 +230,6 @@ int validateStartingSelection() {
 //             << "Enter again: ";
 //        getline(cin, start);
 //    }
-//    switch (std::stoi(start)) {
-//        case 1:
-//            cout << "Custom starting position\n";
-//            break;
-//        case 2:
-//            cout << "Random starting position\n";
-//            break;
-//        default:
-//            cout << "Invalid selection!\n";
-//    }
 //
-//    cout << "Selection made is " << start << endl;
 //    return returnInteger(start);
 }
