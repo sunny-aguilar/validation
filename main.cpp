@@ -100,6 +100,9 @@ int validateSize() {
     return boardSize;
 }
 
+/*********************************************************************
+** Description:     Validate number of rows and columns for the board
+*********************************************************************/
 string validateSizeRegex() {
     string choice;
     std::regex validMatch("^[2-9]|[1-9][0-9]|100$");
@@ -115,6 +118,9 @@ string validateSizeRegex() {
     return choice;
 }
 
+/*********************************************************************
+** Description:     Validate number of rows and columns for the board
+*********************************************************************/
 int validateSteps(int min, int max) {
     char choice[100];
     int steps = 0;
