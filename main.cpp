@@ -13,13 +13,15 @@ string validateSizeRegex();
 int validateNumber(int min, int max);
 int validateStartingSelection();
 int validateCustomStarting(int min, int boardSize);
+int validateOrientation();
 
 int main() {
 //    validateSelection();
 //    cout << "Returning value " << validateSize();
 //    validateNumber(1, 1000);
 //    cout << "Returning value " << validateStartingSelection();
-    cout << "Returning custom starting " << validateCustomStarting(2, 100) << endl;
+//    cout << "Returning custom starting " << validateCustomStarting(2, 100) << endl;
+    cout << "Returning custom starting " << validateOrientation() << endl;
 
 }
 /*********************************************************************
@@ -232,4 +234,26 @@ int validateCustomStarting(int min, int boardSize) {
 //    }
 //
 //    return returnInteger(start);
+}
+
+/*********************************************************************
+** Description:     Validate initial ant orientation
+*********************************************************************/
+int validateOrientation() {
+    return validateNumber(1, 4);
+
+
+//    string orientation;
+//    getline(cin, orientation);
+//
+//    regex validMatch("^[1-4]{1}$");
+//    std::smatch m;
+
+//    while (!std::regex_match(orientation, m, validMatch)) {
+//        cout << "Invalid Input!\n\n"
+//             << "Enter again: ";
+//        getline(cin, orientation);
+//    }
+//    cout << "Selection made is " << orientation << endl;
+//    return returnInteger(orientation);
 }
