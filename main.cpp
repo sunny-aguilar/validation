@@ -125,7 +125,6 @@ int validateSteps(int min, int max) {
 
     // determine # of digits in max value acceptable
     long unsigned length = std::to_string(max).length();
-    cout << "Max length " << length << endl;
 
     do {
         cout << "Enter an integer between " << min << " and " << max << endl;
