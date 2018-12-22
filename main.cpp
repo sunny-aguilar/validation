@@ -117,7 +117,7 @@ string validateSizeRegex() {
 
 int validateSteps(int min, int max) {
     char choice[100];
-    int boardSize = 0;
+    int steps = 0;
     std::stringstream convert;
     bool tooLong = false;
     bool isNotDigit = false;
@@ -126,8 +126,6 @@ int validateSteps(int min, int max) {
     // determine # of digits in max value acceptable
     long unsigned length = std::to_string(max).length();
     cout << "Max length " << length << endl;
-
-    cout << "Min " << min << " and max is " << max << endl;
 
     do {
         cout << "Enter an integer between " << min << " and " << max << endl;
@@ -154,10 +152,10 @@ int validateSteps(int min, int max) {
         if (isNotDigit == false && tooLong == false) {
             convert.clear();
             convert << choice;
-            convert >> boardSize;
+            convert >> steps;
 
-            if (boardSize >= min && boardSize <= max) {
-                cout << "You entered " << boardSize << endl;
+            if (steps >= min && steps <= max) {
+                cout << "You entered " << steps << endl;
             }
             else {
                 notInRange = true;
@@ -165,5 +163,5 @@ int validateSteps(int min, int max) {
         }
     } while (tooLong || isNotDigit || notInRange);
 
-    return 0;
+    return steps;
 }
