@@ -10,12 +10,14 @@ using std::string;
 string validateSelection();
 int validateSize();
 string validateSizeRegex();
-int validateSteps(int min, int max);
+int validateNumber(int min, int max);
+int validateStartingSelection();
 
 int main() {
 //    validateSelection();
 //    cout << "Returning value " << validateSize();
-    validateSteps(1, 1000);
+//    validateNumber(1, 1000);
+    cout << "Returning value " << validateStartingSelection();
 
 }
 /*********************************************************************
@@ -121,7 +123,7 @@ string validateSizeRegex() {
 /*********************************************************************
 ** Description:     Validate number of rows and columns for the board
 *********************************************************************/
-int validateSteps(int min, int max) {
+int validateNumber(int min, int max) {
     char choice[100];
     int steps = 0;
     std::stringstream convert;
@@ -169,4 +171,59 @@ int validateSteps(int min, int max) {
     } while (tooLong || isNotDigit || notInRange);
 
     return steps;
+}
+/*********************************************************************
+** Description:     Validate start location of the ant
+*********************************************************************/
+int validateStartingSelection() {
+    string choice;
+    bool invalid = true;
+
+    cout << "Choose 1 or 2:\n";
+    getline(cin, choice);
+
+    while (invalid) {
+        if (choice.length() >= 1 && choice != "1" && choice != "2") {
+            cout << "Invalid input!\n";
+            cout << "Please enter 1 or 2\n";
+            getline(cin, choice);
+        }
+        else {
+            if (choice == "1") {
+                cout << "You have selected choice 1\n";
+            }
+            else if (choice == "2") {
+                cout << "You have selected choice 2\n";
+            }
+            invalid = false;
+        }
+    }
+
+    return stoi(choice);
+
+
+//    string start;
+//    getline(cin, start);
+//
+//    regex validMatch("^[1-2]{1}$");
+//    std::smatch m;
+//
+//    while (!std::regex_match(start, m, validMatch)) {
+//        cout << "Invalid Input!\n\n"
+//             << "Enter again: ";
+//        getline(cin, start);
+//    }
+//    switch (std::stoi(start)) {
+//        case 1:
+//            cout << "Custom starting position\n";
+//            break;
+//        case 2:
+//            cout << "Random starting position\n";
+//            break;
+//        default:
+//            cout << "Invalid selection!\n";
+//    }
+//
+//    cout << "Selection made is " << start << endl;
+//    return returnInteger(start);
 }
